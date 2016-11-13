@@ -1,9 +1,7 @@
 SuperBook::Application.routes.draw do
-  get "comments/new"
-  get "comments/edit"
-  get "comments/New"
-  get "comments/Edit"
-  resources :posts
+  resources :posts do
+    resources :comments, except: [:index, :show]
+  end
   resources :memberships, except: :show
 
   # The priority is based upon order of creation: first created -> highest priority.

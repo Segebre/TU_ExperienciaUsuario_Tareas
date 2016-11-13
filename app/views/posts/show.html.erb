@@ -31,3 +31,7 @@
     <tr><%= link_to "Edit", edit_post_path %></tr>
   </tbody>
 </table>
+
+<%= render partial: "post_comments", locals: {comments: @post.comments} %>
+
+<td><strong><%= link_to "Comment", new_post_comment_path(@post) %></strong></td>
