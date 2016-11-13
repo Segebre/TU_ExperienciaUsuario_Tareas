@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
 
   def destroy
     Post.find(params[:post_id]).comments.find(params[:id]).destroy
-    redirect_to Post.find(params[:post_id])
+    redirect_to Post.find(params[:post_id]), notice: "Successfully Destroyed!"
   end
 
   protected

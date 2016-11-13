@@ -22,11 +22,11 @@
     <tr>
       <td><%= @post.id %></td>
       <td><%= @post.message %></td>
-      <td><%= @post.scheduled_at %></td>
+      <td><%= nice_date(@post.scheduled_at) %></td>
       <td><%= @post.location %></td>
       <td><%= @post.avatar_url %></td>
-      <td><%= @post.created_at %></td>
-      <td><%= @post.updated_at %></td>
+      <td><%= nice_date(@post.created_at) %></td>
+      <td><%= nice_date(@post.updated_at) %></td>
     </tr>
     <tr><%= link_to "Edit", edit_post_path %></tr>
   </tbody>
