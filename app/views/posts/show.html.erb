@@ -1,4 +1,11 @@
 <h1>Post #<%= @post.id %></h1>
+
+<% if flash[:notice] %>
+  <p style="background: yellow">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
 <table>
   <thead>
     <tr>
@@ -7,6 +14,8 @@
       <th>Scheduled</th>
       <th>Location</th>
       <th>Avatar URL</th>
+      <th>Created At</th>
+      <th>Last Updated</th>
     </tr>
   </thead>
   <tbody>
@@ -16,6 +25,8 @@
       <td><%= @post.scheduled_at %></td>
       <td><%= @post.location %></td>
       <td><%= @post.avatar_url %></td>
+      <td><%= @post.created_at %></td>
+      <td><%= @post.updated_at %></td>
     </tr>
     <tr><%= link_to "Edit", edit_post_path %></tr>
   </tbody>

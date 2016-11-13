@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.order(:created_at)
+    @posts = Post.order(:created_at).reverse
   end
 
   def show
@@ -23,6 +23,23 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update_attributes(post_params)
+      redirect_to @post, notice: "Updated Successfully!"
+    else
+      flash[:errors] = "Could not update post"
+      render :new
+    end
+  end
+
+  def destroy
+    Post.find(params[:id]).destroy
+    redirect_to posts_path
   end
 
   protected

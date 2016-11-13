@@ -1,0 +1,24 @@
+<h2>Please fill the form below: </h2>
+<%= render partial: "shared/errors", locals: {obj: post} %>
+<%= form_for(post) do |f| %>
+    <p>
+      <%= f.label :message, "Message" %>
+      <%= f.text_area :message %>
+  </p>
+  <p>
+    <%= f.label :scheduled_at, "Scheduled At: " %>
+    <%= f.date_field :scheduled_at %>
+  </p>
+  <p>
+    <%= f.label :location, "Location: " %>
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :avatar_url, "Avatar URL: " %>
+    <%= f.text_field :avatar_url %>
+  </p>
+  <p>
+    <%= f.submit "Save" %>
+    <%= link_to "Cancel", posts_path %>
+  </p>
+<% end %>
