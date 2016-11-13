@@ -39,7 +39,7 @@ class PostsController < ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    redirect_to posts_path
+    redirect_to posts_path, notice: "Successfully Destroyed!"
   end
 
   protected

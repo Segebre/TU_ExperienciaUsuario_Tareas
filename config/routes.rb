@@ -1,6 +1,10 @@
 SuperBook::Application.routes.draw do
-
+  get "comments/new"
+  get "comments/edit"
+  get "comments/New"
+  get "comments/Edit"
   resources :posts
+  resources :memberships, except: :show
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
