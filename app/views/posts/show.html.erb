@@ -1,0 +1,22 @@
+<h1>Post #<%= @post.id %></h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Message</th>
+      <th>Scheduled</th>
+      <th>Location</th>
+      <th>Avatar URL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @post.id %></td>
+      <td><%= @post.message %></td>
+      <td><%= @post.scheduled_at %></td>
+      <td><%= @post.location %></td>
+      <td><%= @post.avatar_url %></td>
+    </tr>
+    <tr><%= link_to "Edit", edit_post_path %></tr>
+  </tbody>
+</table>

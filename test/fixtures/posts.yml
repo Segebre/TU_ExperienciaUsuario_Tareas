@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  message: MyText
+  scheduled_at: 2016-10-30 22:17:34
+  location: MyText
+  avatar_url: MyText
+
+two:
+  message: MyText
+  scheduled_at: 2016-10-30 22:17:34
+  location: MyText
+  avatar_url: MyText

@@ -1,0 +1,17 @@
+<h1>Posts</h1>
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Post</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @posts %>
+    <tr>
+      <td><%= link_to "New Post", new_post_path %></td>
+    </tr>
+  </tbody>
+</table>
+
