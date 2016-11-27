@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161127020142) do
+ActiveRecord::Schema.define(version: 20161127023322) do
 
   create_table "characters", force: true do |t|
     t.text     "name"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(version: 20161127020142) do
   add_index "characters", ["membership_id"], name: "index_characters_on_membership_id"
 
   create_table "comments", force: true do |t|
-    t.text     "name"
     t.text     "message"
     t.integer  "post_id"
     t.datetime "created_at"
