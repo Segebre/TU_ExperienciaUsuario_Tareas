@@ -11,9 +11,12 @@
       <%= f.text_area :message %>
     </p>
     <p>
+      <%= f.label :character_id, "Character" %>
+    	<%= f.select :character_id, Character.pluck(:name, :id) %>
+    </p>
+    <p>
       <%= f.submit "Save" %>
       <%= link_to "Cancel", @post %>
     </p>
   <% end %>
 </p>
-

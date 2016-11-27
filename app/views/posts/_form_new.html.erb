@@ -14,6 +14,10 @@
     <%= f.text_field :location %>
   </p>
   <p>
+    <%= f.label :character_id, "Character" %>
+  	<%= f.select :character_id, Character.pluck(:name, :id) %>
+  </p>
+  <p>
     <%= f.submit "Save" %>
     <%= link_to "Cancel", posts_path %>
   </p>
