@@ -13,7 +13,6 @@
       <th>Message</th>
       <th>Scheduled</th>
       <th>Location</th>
-      <th>Avatar URL</th>
       <th>Created At</th>
       <th>Last Updated</th>
     </tr>
@@ -24,7 +23,6 @@
       <td><%= @post.message %></td>
       <td><%= nice_date(@post.scheduled_at) %></td>
       <td><%= @post.location %></td>
-      <td><%= @post.avatar_url %></td>
       <td><%= nice_date(@post.created_at) %></td>
       <td><%= nice_date(@post.updated_at) %></td>
     </tr>
