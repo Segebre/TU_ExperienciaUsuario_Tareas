@@ -1,4 +1,7 @@
 SuperBook::Application.routes.draw do
+  get "characters/new"
+  get "characters/edit"
+  get "characters/show"
   resources :posts do
     resources :comments, except: [:index, :show]
   end
