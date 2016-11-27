@@ -1,0 +1,10 @@
+<% if obj.errors.any? %>
+  <p>
+    Could not save changes due to the folowing errors: 
+    <ul>
+      <% obj.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </p>
+<% end %>

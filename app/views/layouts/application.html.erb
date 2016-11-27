@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SuperBook</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<table>
+  <tbody>
+    <td><%= link_to "Home", root_path %></td>
+    <td><%= link_to "Posts", posts_path %></td>
+    <td><%= link_to "Memberships", memberships_path %></td>
+  </tbody>
+</table>
+
+<%= yield %>
+
+</body>
+</html>

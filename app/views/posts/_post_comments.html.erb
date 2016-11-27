@@ -1,0 +1,19 @@
+<% if comments.any? %>
+  <p>
+    <h2>Comments: </h2>
+    <table>
+      <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Comment</th>
+        <th>Created At</th>
+      </thead>
+      <tbody>
+        <%= render comments.order(:created_at).reverse %>
+      </tbody>
+    </table>
+  </p>
+  <h3><strong>Total amount of comments: <%= total_comments(@post) %></strong></h3>
+<% else %>
+  <p><strong>No comments</strong></p>
+<% end %>
