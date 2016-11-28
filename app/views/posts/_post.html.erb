@@ -1,7 +1,7 @@
 <tr>
   <%if(post.try(:scheduled_at) <= Time.now)%>
-  <td><%= link_to post.id, post %></td>
-  <td><%= post.message %></td>
-  <td><%= post.location %></td>
+    <td><%= link_to post.id, post %></td>
+    <td><%= post.message %></td>
+    <td><%= post.location %></td>
   <%end%>
 </tr>

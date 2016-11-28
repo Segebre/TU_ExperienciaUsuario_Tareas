@@ -1,2 +1,35 @@
-<h1>Characters#show</h1>
-<p>Find me in app/views/characters/show.html.erb</p>
+<h1><%= @character.name %></h1>
+
+<% if flash[:notice] %>
+  <p style="background: yellow">
+    <%= flash[:notice] %>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th></th>
+      <th>Name</th>
+      <th>Role</th>
+      <th>Membership</th>
+      <th>Email</th>
+      <th>Created At</th>
+      <th>Last Updated</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @character.id %></td>
+      <td><%= image_tag @character.avatar_url %></td>
+      <td><%= @character.name %></td>
+      <td><%= @character.role %></td>
+      <td><%= Membership.find(@character.membership_id).name %></td>
+      <td><%= @character.email %></td>
+      <td><%= nice_date(@character.created_at) %></td>
+      <td><%= nice_date(@character.updated_at) %></td>
+    </tr>
+    <tr><%= link_to "Edit", edit_post_path %></tr>
+  </tbody>
+</table>
