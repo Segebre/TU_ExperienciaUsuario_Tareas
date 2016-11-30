@@ -11,7 +11,7 @@
   </p>
   <p>
     <%= f.label :membership_id, "Membership" %>
-    <%= f.select :membership_id, Membership.pluck(:name, :id) %>
+    <%= f.select :membership_id, Membership.pluck(:name, :id), {} %>
   </p>
   <p>
     <%= f.label :email, "Email: " %>

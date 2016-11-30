@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
 
+    # raise @comment.to_yaml
+
     if @comment.save
       redirect_to @post, notice: "Comment Succeded!"
     else
@@ -40,6 +42,6 @@ class CommentsController < ApplicationController
 
   protected
     def comment_params
-      params.require(:comment).permit(:message)
+      params.require(:comment).permit(:message, :character_id)
     end
 end

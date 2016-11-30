@@ -1,18 +1,2 @@
 <h1>Edit Comment #<%= @comment.id %> for Post #<%= @post.id %></h1>
-<p>
-  <%= render partial: "shared/errors", locals: {obj: @comment} %>
-  <%= form_for [@post, @comment] do |f| %>
-    <p>
-      <%= f.label :name, "Name: " %>
-      <%= f.text_field :name %>
-    </p>
-    <p>
-      <%= f.label :message, "Comment: " %>
-      <%= f.text_area :message %>
-    </p>
-    <p>
-      <%= f.submit "Save" %>
-      <%= link_to "Cancel", @post %>
-    </p>
-  <% end %>
-</p>
+<%= render partial: "form", locals: {post: @post, comment: @comment} %>
