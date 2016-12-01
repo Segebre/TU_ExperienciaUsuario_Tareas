@@ -44,6 +44,6 @@ class PostsController < ApplicationController
 
   protected
     def post_params
-      params.require(:post).permit(:message, :scheduled_at, :location, :avatar_url)
+      params.require(:post).permit(:message, :scheduled_at, :location, :avatar_url, :character_id)
     end
 end
