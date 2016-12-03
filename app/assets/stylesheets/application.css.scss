@@ -7,7 +7,15 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
  *= require_self
- *= require_tree .
+ *= require font-awesome
  */
+ 	@import "bootstrap-sprockets";
+	@import "bootstrap";
+
+	.field_with_errors {
+    @extend .control-group;
+    @extend .error;
+
+    display: inline-block;
+}

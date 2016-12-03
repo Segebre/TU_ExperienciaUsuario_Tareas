@@ -7,17 +7,52 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav class="navbar navbar-inverse">
 
-<table>
-  <tbody>
-    <td><%= link_to "Home", root_path %></td>
-    <td><%= link_to "New Character", new_character_path %></td>
-    <td><%= link_to "Posts", posts_path %></td>
-    <td><%= link_to "Memberships", memberships_path %></td>
-  </tbody>
-</table>
+    <div class="container-fluid">
 
-<%= yield %>
+      <div class="navbar-header">
+        <!--<a class="navbar-brand" href="#">SUPERBOOK!!!</a>-->
+      </div>
 
-</body>
-</html>
+      <ul class="nav navbar-nav">
+        <li>
+					<%= link_to root_path do %>
+						<span class="fa fa-home"></span>
+						Home
+					<% end %>
+				</li>
+				<li>
+					<%= link_to new_character_path do %>
+						<span class="fa-id-card"></span>
+						New Character
+					<% end %>
+					</li>
+				<li>
+					<%= link_to posts_path do %>
+						<span class="fa fa-book"></span>
+						View Posts
+					<% end %>
+				</li>
+				<li>
+					<%= link_to memberships_path do %>
+						<span class="fa fa-sign-in"></span>
+						Members
+					<% end %>
+				</li>
+      </ul>
+    </nav>
+      <div class="container-fluid">
+
+    		<%= yield %>
+
+    		<hr>
+    		<footer>
+    			<p>
+            Here to fight for
+            <strong>
+              justice!!
+            </strong>, except for deadpool.
+          </p>
+    		</footer>
+    	</div>
