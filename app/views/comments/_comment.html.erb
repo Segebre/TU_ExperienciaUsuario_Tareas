@@ -1,8 +1,10 @@
 <tr>
   <td><%= link_to comment.id, edit_post_comment_path(comment.post, comment) %></td>
-  <td><%= image_tag comment.character.avatar_url, :size => "200x184" %></td>
+  <td><%= image_tag comment.character.avatar_url, :size => "40x50" %></td>
   <td><%= link_to comment.character.name, comment.character %></td>
   <td><%= comment.message %></td>
   <td><%= nice_date(comment.created_at) %></td>
-  <td><%= link_to "Delete", [comment.post, comment], method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %></td> 
+  <div class="btn-group" role="group">
+  <td><%= link_to "Delete", [comment.post, comment],class: "btn btn-default", method: :delete, data: {confirm: "Are you sure you want to delete this comment?"} %></td>
+</div>
 </tr>

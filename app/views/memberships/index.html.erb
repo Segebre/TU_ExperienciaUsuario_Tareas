@@ -6,7 +6,7 @@
   </p>
 <% end %>
 
-<table>
+<table border="1" class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -15,8 +15,8 @@
   </thead>
   <tbody>
     <%= render @memberships %>
-    <tr>
-      <td><%= link_to "New Membership", new_membership_path %></td>
-    </tr>
   </tbody>
 </table>
+<div class="btn-group" role="group">
+  <%= link_to "New Membership", new_membership_path,class: "btn btn-default" %>
+</div>
