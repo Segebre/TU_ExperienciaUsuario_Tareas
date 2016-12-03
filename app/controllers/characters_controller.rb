@@ -38,6 +38,11 @@ class CharactersController < ApplicationController
     redirect_to root_path, notice: "Successfully Destroyed!"
   end
 
+  def posts
+    @character = Character.find(params[:id])
+    @posts = Post.where(character_id: @character.id).order(:created_at).reverse
+  end
+
   protected
     def character_params
       params.require(:character).permit(:name, :role, :email, :avatar_url, :membership_id)
