@@ -39,8 +39,7 @@ class MembershipsController < ApplicationController
   end
 
   def characters
-    @character = Character.find(params[:id])
-    @posts = Post.where(character_id: @character.id).order(:created_at).reverse
+    @characters =Character.where(membership_id: params[:id])
   end
 
   protected
