@@ -15,6 +15,7 @@ SuperBook::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   get '/characters/:id/posts' => 'characters#posts'
+  get 'memberships/:id/characters' => 'memberships#characters'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

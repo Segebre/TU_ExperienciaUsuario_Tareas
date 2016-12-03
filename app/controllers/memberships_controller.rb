@@ -38,6 +38,11 @@ class MembershipsController < ApplicationController
     redirect_to memberships_path, notice: "Successfully Destroyed!"
   end
 
+  def characters
+    @character = Character.find(params[:id])
+    @posts = Post.where(character_id: @character.id).order(:created_at).reverse
+  end
+
   protected
     def membership_params
       params.require(:membership).permit(:name)
