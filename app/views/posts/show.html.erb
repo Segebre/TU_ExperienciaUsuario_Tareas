@@ -6,7 +6,7 @@
   </p>
 <% end %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -19,6 +19,7 @@
   </thead>
   <tbody>
     <tr>
+      <td><%= image_tag @post.character.avatar_url, :size => "80x100" %></td>
       <td><%= @post.id %></td>
       <td><%= @post.message %></td>
       <td><%= nice_date(@post.scheduled_at) %></td>
@@ -26,10 +27,17 @@
       <td><%= nice_date(@post.created_at) %></td>
       <td><%= nice_date(@post.updated_at) %></td>
     </tr>
-    <tr><%= link_to "Edit", edit_post_path %></tr>
+    <tr>
+      <div class="btn-group" role="group">
+        <%= link_to "Edit", edit_post_path, class: "btn btn-default" %>
+      </div>
+
+    </tr>
   </tbody>
 </table>
 
-<%= render partial: "post_comments", locals: {comments: @post.comments} %>
 
-<td><strong><%= link_to "Comment", new_post_comment_path(@post) %></strong></td>
+<%= render partial: "post_comments", locals: {comments: @post.comments} %>
+<div class="btn-group" role="group">
+<td><strong><%= link_to "Comment", new_post_comment_path(@post),class: "btn btn-default" %></strong></td>
+</div>

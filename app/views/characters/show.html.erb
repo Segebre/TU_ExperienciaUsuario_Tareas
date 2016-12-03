@@ -6,7 +6,7 @@
   </p>
 <% end %>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
@@ -30,6 +30,9 @@
       <td><%= nice_date(@character.created_at) %></td>
       <td><%= nice_date(@character.updated_at) %></td>
     </tr>
-    <tr><%= link_to "Edit", edit_character_path %></tr>
   </tbody>
+
+  <div class="btn-group" role="group">
+    <%= link_to "Edit", edit_character_path,class: "btn btn-default" %>
+  </div>
 </table>

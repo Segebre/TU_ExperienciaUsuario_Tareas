@@ -1,12 +1,13 @@
 <h2>Please fill the form below: </h2>
 <%= render partial: "shared/errors", locals: {obj: membership} %>
 <%= form_for(membership) do |f| %>
-<p>
+<div class="form-group">
   <%= f.label :name, "Name" %>
-  <%= f.text_field :name %>
-</p>
-<p>
-  <%= f.submit "Save" %>
-  <%= link_to "Cancel", memberships_path %>
-</p>
+  <%= f.text_field :name, class: "form-control" %>
+</div>
+<div class="btn-group" role="group">
+  <%= f.submit "Save",class: "btn btn-default" %>
+  <%= link_to "Cancel", memberships_path,class: "btn btn-default" %>
+</div>
+
 <% end %>
