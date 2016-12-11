@@ -1,4 +1,7 @@
 SuperBook::Application.routes.draw do
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
   resources :posts do
     resources :comments, except: [:index, :show]
   end
