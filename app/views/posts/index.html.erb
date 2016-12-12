@@ -18,6 +18,8 @@
 
   </tbody>
 </table>
-<div class="btn-group" role="group">
-  <td><%= link_to "New Post", new_post_path, class: "btn btn-default" %>
-</div>
+<%if current_user%>
+  <div class="btn-group" role="group">
+    <td><%= link_to "New Post", new_post_path, class: "btn btn-default" %>
+  </div>
+<%end%>

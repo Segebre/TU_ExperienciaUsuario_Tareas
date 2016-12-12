@@ -17,30 +17,61 @@
 
       <ul class="nav navbar-nav">
         <li>
+          <%if current_user%>
+
+            <%curr_char= Character.find_by_email(current_user.email)%>
+            <span style="color: white"><%=curr_char.name%></span>
+            <%= link_to (image_tag curr_char.avatar_url, :size => "30x30"), curr_char %>
+          <%end%>
+        </end%>
+        </li>
+        <li>
 					<%= link_to root_path do %>
 						<span class="fa fa-home"></span>
-						Home
+						<p>Home</p>
 					<% end %>
 				</li>
-				<li>
-					<%= link_to new_character_path do %>
-						<span class="fa-id-card"></span>
-						New Character
-					<% end %>
-					</li>
-				<li>
+        <%unless current_user %>
+  				<li>
+  					<%= link_to new_character_path do %>
+  						<span class="fa-id-card"></span>
+  						<p>Sign Up</p>
+  					<% end %>
+  				</li>
+        <%end%>
+        <li>
 					<%= link_to posts_path do %>
 						<span class="fa fa-book"></span>
-						View Posts
+						<p>View Posts</p>
 					<% end %>
 				</li>
-				<li>
-					<%= link_to memberships_path do %>
-						<span class="fa fa-sign-in"></span>
-						Members
-					<% end %>
-				</li>
+        <%if current_user%>
+          <%if current_user.email=="system@heroe.com"%>
+    				<li>
+    					<%= link_to memberships_path do %>
+    						<span class="fa fa-sign-in"></span>
+    						<p>Members</p>
+    					<% end %>
+    				</li>
+          <%end%>
+        <%end%>
+        <%unless current_user%>
+          <li>
+            <%= link_to login_path do %>
+              <span class="fa fa-sign-in"></span>
+              <p>Log In</p>
+            <% end %>
+          </li>
+        <%else%>
+        <li>
+          <%= link_to logout_path,data: {method: :delete} do %>
+            <span class="fa fa-sign-out"></span>
+            <p>Log Out</p>
+          <% end %>
+        </li>
+        <%end%>
       </ul>
+
     </nav>
       <div class="container-fluid">
 

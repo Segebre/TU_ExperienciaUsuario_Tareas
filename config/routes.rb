@@ -1,7 +1,10 @@
 SuperBook::Application.routes.draw do
-  get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
+
+  get "/login" => "sessions#new"
+  post "/login" => "sessions#create"
+  delete "/logout" => "sessions#destroy"
+
+
   resources :posts do
     resources :comments, except: [:index, :show]
   end
@@ -19,6 +22,8 @@ SuperBook::Application.routes.draw do
 
   get '/characters/:id/posts' => 'characters#posts'
   get 'memberships/:id/characters' => 'memberships#characters'
+
+  #get '/characters/memberships/:id/characters' => 'memberships#characters'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
