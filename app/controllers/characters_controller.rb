@@ -18,6 +18,9 @@ class CharactersController < ApplicationController
 
   def edit
     @character = Character.find(params[:id])
+    unless(isItMe(@character))
+      redirect_to root_path, notice: "That's not my profile!!"
+    end
   end
 
   def update
