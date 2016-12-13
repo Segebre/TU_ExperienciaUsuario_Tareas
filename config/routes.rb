@@ -9,7 +9,7 @@ SuperBook::Application.routes.draw do
     resources :comments, except: [:index, :show]
   end
   resources :memberships, except: :show
-  resources :characters, except: :index
+  resources :characters, except: :index, :path_names => {:show => 'profile'}
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

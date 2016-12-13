@@ -1,6 +1,14 @@
 class MembershipsController < ApplicationController
   def index
-    @memberships = Membership.order(:name)
+    if(current_user)
+      if(current_user.email=="system@heroe.com")
+        @memberships = Membership.order(:name)
+      end
+      else
+        redirect_to root_path;
+    end
+    else
+    redirect_to root_path;
   end
 
   def new
@@ -9,10 +17,9 @@ class MembershipsController < ApplicationController
 
   def create
     @membership = Membership.new(membership_params)
-
     if @membership.save
       redirect_to memberships_path, notice: "Added Successfully!"
-    else
+          else
       flash[:notice] = "Could not add membership"
       render :new
     end

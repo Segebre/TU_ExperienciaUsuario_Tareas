@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211104142) do
+ActiveRecord::Schema.define(version: 20161212215102) do
 
   create_table "characters", force: true do |t|
     t.text     "name"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20161211104142) do
     t.text     "avatar_url"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "password_digest"
   end
 
   add_index "characters", ["membership_id"], name: "index_characters_on_membership_id"

@@ -9,10 +9,10 @@ class SessionsController < ApplicationController
     email = params[:session][:email]
     passw = params[:session][:password]
 
-    @user = User.find_by_email(email)
+    @char = Character.find_by_email(email)
 
-    if @user && @user.authenticate(passw)
-      login(@user)
+    if @char && @char.authenticate(passw)
+      login(@char)
     else
       redirect_to login_path, flash: { error: "Email o Password incorrecto"}
     end
