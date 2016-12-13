@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create]
+
   def new
     if current_user
       redirect_to posts_path

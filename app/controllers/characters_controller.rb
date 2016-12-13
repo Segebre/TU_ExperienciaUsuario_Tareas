@@ -1,4 +1,6 @@
 class CharactersController < ApplicationController
+  skip_before_action :authenticate, only: [:new, :create, :show, :destroy]
+
   def new
     @character = Character.new
   end
