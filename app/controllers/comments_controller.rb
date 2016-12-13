@@ -19,29 +19,49 @@ class CommentsController < ApplicationController
   end
 
    def edit
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
+     @post = Post.find(params[:post_id])
+     @comment = @post.comments.find(params[:id])
+     unless(belongsToMe)
+      redirect_to @post
+    end
   end
 
   def update
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-
-    if @comment.update_attributes(comment_params)
-      redirect_to @post, notice: "Updated Successfully!"
+    if(belongsToMe)
+      if @comment.update_attributes(comment_params)
+        redirect_to @post, notice: "Updated Successfully!"
+      else
+        flash[:errors] = "Could not update loan"
+        render :edit
+      end
     else
-      flash[:errors] = "Could not update loan"
-      render :edit
+      redirect_to @post, notice: "Thats not your comment!!"
     end
   end
 
   def destroy
-    Post.find(params[:post_id]).comments.find(params[:id]).destroy
-    redirect_to Post.find(params[:post_id]), notice: "Successfully Destroyed!"
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    if(belongsToMe)
+      Post.find(params[:post_id]).comments.find(params[:id]).destroy
+      redirect_to Post.find(params[:post_id]), notice: "Successfully Destroyed!"
+    else
+      redirect_to @post, notice: "Thats not your comment!!"
+    end
   end
 
   protected
     def comment_params
       params.require(:comment).permit(:message, :character_id)
+    end
+
+    def belongsToMe
+      if(current_user && current_user.id==@comment.character_id || current_user && current_user.email=="system@heroe.com")
+        true
+      else
+        false
+      end
     end
 end

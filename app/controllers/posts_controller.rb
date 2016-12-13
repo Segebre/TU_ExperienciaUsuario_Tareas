@@ -8,7 +8,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    if(current_user)
+      @post = Post.new
+    else
+      redirect_to login_path
+    end
   end
 
   def create
@@ -24,6 +28,9 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    unless(belongsToMe)
+      redirect_to @post, notice:"That's not your post!!"
+    end
   end
 
   def update
@@ -38,12 +45,24 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to posts_path, notice: "Successfully Destroyed!"
+    post= Post.find(params[:id])
+    if(belongsToMe)
+      post.destroy
+      redirect_to posts_path, notice: "Successfully Destroyed!"
+    else
+      redirect_to post
   end
 
   protected
     def post_params
       params.require(:post).permit(:message, :scheduled_at, :location, :avatar_url, :character_id)
+    end
+
+    def belongsToMe
+      if(current_user && current_user.id==@post.character_id || current_user && current_user.email=="system@heroe.com")
+        true
+      else
+        false
+      end
     end
 end

@@ -1,18 +1,18 @@
 class MembershipsController < ApplicationController
   def index
-    if(current_user)
-      if(current_user.email=="system@heroe.com")
-        @memberships = Membership.order(:name)
-      end
-      else
-        redirect_to root_path;
-    end
+    if(current_user && current_user.email=="system@heroe.com")
+      @memberships = Membership.order(:name)
     else
-    redirect_to root_path;
+      redirect_to root_path;
+    end
   end
 
   def new
-    @membership = Membership.new
+    if(current_user && current_user.email=="system@heroe.com")
+      @membership = Membership.new
+    else
+      redirect_to root_path;
+    end
   end
 
   def create

@@ -20,7 +20,7 @@ SuperBook::Application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
-  get '/characters/:id/posts' => 'characters#posts'
+  get '/characters/:id/posts' => 'characters#posts', as: 'character_posts'
   get 'memberships/:id/characters' => 'memberships#characters'
 
   #get '/characters/memberships/:id/characters' => 'memberships#characters'

@@ -28,9 +28,11 @@
       <td><%= nice_date(@post.updated_at) %></td>
     </tr>
     <tr>
-      <div class="btn-group" role="group">
-        <%= link_to "Edit", edit_post_path, class: "btn btn-default" %>
-      </div>
+      <%if(current_user && current_user.id==@post.character_id || current_user && current_user.email=="system@heroe.com")%>
+        <div class="btn-group" role="group">
+          <%= link_to "Edit", edit_post_path, class: "btn btn-default" %>
+        </div>
+      <%end%>
 
     </tr>
   </tbody>
