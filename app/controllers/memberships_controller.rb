@@ -26,7 +26,11 @@ class MembershipsController < ApplicationController
   end
 
   def edit
-    @membership = Membership.find(params[:id])
+    if(current_user && current_user.email=="system@heroe.com")
+      @membership = Membership.find(params[:id])
+    else
+      redirect_to root_path
+  end
   end
 
   def update
