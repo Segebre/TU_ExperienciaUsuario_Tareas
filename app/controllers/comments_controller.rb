@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
    def edit
      @post = Post.find(params[:post_id])
      @comment = @post.comments.find(params[:id])
-     unless(belongsToMe)
+     unless(belongsToMe(@comment))
       redirect_to @post
     end
   end
@@ -44,7 +44,7 @@ class CommentsController < ApplicationController
   def destroy
     @post = Post.find(params[:post_id])
     @comment = @post.comments.find(params[:id])
-    if(belongsToMe)
+    if(belongsToMe(@comment))
       Post.find(params[:post_id]).comments.find(params[:id]).destroy
       redirect_to Post.find(params[:post_id]), notice: "Successfully Destroyed!"
     else
@@ -57,11 +57,5 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(:message, :character_id)
     end
 
-    def belongsToMe
-      if(current_user && current_user.id==@comment.character_id || current_user && current_user.email=="system@heroe.com")
-        true
-      else
-        false
-      end
-    end
+
 end
