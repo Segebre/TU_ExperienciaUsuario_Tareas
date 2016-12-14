@@ -6,7 +6,7 @@ class Character < ActiveRecord::Base
 
   validates :name, :email, presence: true, uniqueness: true
 
-  after_save :default_avatar_url
+  before_save :default_avatar_url
 
   def self.roles
     ["Heroe", "Villain"]
@@ -15,7 +15,7 @@ class Character < ActiveRecord::Base
   protected
     def default_avatar_url
       if self.avatar_url.blank?
-        update_column(:avatar_url, 'https://tracker.moodle.org/secure/attachment/30912/f3.png')
+        self.avatar_url = 'https://tracker.moodle.org/secure/attachment/30912/f3.png'
       end
     end
 end

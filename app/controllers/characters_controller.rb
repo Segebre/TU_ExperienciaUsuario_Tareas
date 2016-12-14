@@ -9,7 +9,8 @@ class CharactersController < ApplicationController
     @character = Character.new(character_params)
 
     if @character.save
-      redirect_to @character, notice: "Added Successfully!"
+      session[:user_id] = @character.id
+      redirect_to character_path, notice: "Added Successfully!"
     else
       flash[:errors] = "Could not register character"
       render :new
@@ -32,7 +33,7 @@ class CharactersController < ApplicationController
   end
 
   def show
-    @character = Character.find(params[:id])
+      @character = current_user
   end
 
   def destroy
@@ -47,6 +48,6 @@ class CharactersController < ApplicationController
 
   protected
     def character_params
-      params.require(:character).permit(:name, :role, :email, :avatar_url, :membership_id, :password, :password_confirmation)
+      params.require(:character).permit(:id, :name, :role, :email, :avatar_url, :membership_id, :password, :password_confirmation)
     end
 end

@@ -6,10 +6,10 @@ SuperBook::Application.routes.draw do
 
 
   resources :posts do
-    resources :comments, except: [:index, :show]
+    resources :comments, :except => [:index, :show]
   end
   resources :memberships, except: :show
-  resources :characters, except: :index, :path_names => {:show => 'profile'}
+  #resources :characters, :except => [:index, :show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,7 +21,15 @@ SuperBook::Application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
 
   get '/characters/:id/posts' => 'characters#posts', as: 'character_posts'
-  get 'memberships/:id/characters' => 'memberships#characters'
+  get '/memberships/:id/characters' => 'memberships#characters', as: 'membership_characters'
+
+  get    '/profile' => 'characters#show', as: :character
+  post   '/characters', to: 'characters#create'
+  get    '/characters/new', to: 'characters#new', as: :new_character
+  get    '/characters/:id/edit', to: 'characters#edit', as: :edit_character
+  patch  '/characters/:id', to: 'characters#update'
+  put    '/characters/:id', to: 'characters#update'
+  delete '/characters/:id', to: 'characters#destroy'
 
   #get '/characters/memberships/:id/characters' => 'memberships#characters'
 
