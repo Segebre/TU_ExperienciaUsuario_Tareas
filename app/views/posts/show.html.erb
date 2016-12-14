@@ -10,6 +10,7 @@
   <thead>
     <tr>
       <th>ID</th>
+      <th></th>
       <th>Message</th>
       <th>Scheduled</th>
       <th>Location</th>
@@ -19,8 +20,8 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= image_tag @post.character.avatar_url, :size => "80x100" %></td>
       <td><%= @post.id %></td>
+      <td><%= link_to (image_tag @post.character.avatar_url, :size => "80x100"), character_path %></td>
       <td><%= @post.message %></td>
       <td><%= nice_date(@post.scheduled_at) %></td>
       <td><%= @post.location %></td>
